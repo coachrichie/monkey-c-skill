@@ -1,0 +1,74 @@
+{
+  "monkeyC": {
+    "baseUrl": "https://developer.garmin.com/connect-iq/monkey-c/",
+    "pages": [
+      { "path": "", "title": "Monkey C", "keywords": ["language", "syntax"] },
+      { "path": "functions/", "title": "Functions", "keywords": ["function", "method", "callback"] },
+      { "path": "objects-and-memory/", "title": "Objects and Memory", "keywords": ["class", "object", "memory", "scope"] },
+      { "path": "containers/", "title": "Containers", "keywords": ["array", "dictionary", "container"] },
+      { "path": "monkey-types/", "title": "Monkey Types", "keywords": ["type", "typedef", "null"] },
+      { "path": "exceptions-and-errors/", "title": "Exceptions and Errors", "keywords": ["exception", "error", "try", "catch"] },
+      { "path": "annotations/", "title": "Annotations", "keywords": ["annotation", "test", "compiler"] },
+      { "path": "coding-conventions/", "title": "Coding Conventions", "keywords": ["style", "naming", "format"] },
+      { "path": "compiler-options/", "title": "Compiler Options", "keywords": ["compiler", "optimization", "build"] }
+    ]
+  },
+  "coreTopics": {
+    "baseUrl": "https://developer.garmin.com/connect-iq/core-topics/",
+    "pages": [
+      { "path": "", "title": "Core Topics", "keywords": ["platform", "overview"] },
+      { "path": "manifest-and-permissions/", "title": "Manifest and Permissions", "keywords": ["manifest", "permission"] },
+      { "path": "application-and-system-modules/", "title": "Application and System Modules", "keywords": ["application", "lifecycle", "system"] },
+      { "path": "persisting-data/", "title": "Persisting Data", "keywords": ["storage", "persist", "data"] },
+      { "path": "backgrounding/", "title": "Backgrounding", "keywords": ["background", "temporal event"] },
+      { "path": "glances/", "title": "Glances", "keywords": ["glance", "view"] },
+      { "path": "properties-and-app-settings/", "title": "Properties and App Settings", "keywords": ["property", "setting"] },
+      { "path": "intents/", "title": "Intents", "keywords": ["intent", "launch"] },
+      { "path": "notifications/", "title": "Notifications", "keywords": ["notification"] },
+      { "path": "build-configuration/", "title": "Build Configuration", "keywords": ["build", "barrel", "resource"] },
+      { "path": "security/", "title": "Security", "keywords": ["security", "permission", "secret"] },
+      { "path": "user-interface/", "title": "User Interface", "keywords": ["ui", "view", "delegate"] },
+      { "path": "layouts/", "title": "Layouts", "keywords": ["layout", "xml"] },
+      { "path": "graphics/", "title": "Graphics", "keywords": ["graphics", "draw", "bitmap"] },
+      { "path": "input-handling/", "title": "Input Handling", "keywords": ["input", "key", "touch"] },
+      { "path": "native-controls/", "title": "Native Controls", "keywords": ["control", "menu", "picker"] },
+      { "path": "resources/", "title": "Resources", "keywords": ["resource", "string", "font"] },
+      { "path": "monkey-style/", "title": "Monkey Style", "keywords": ["style", "resource"] },
+      { "path": "getting-the-users-attention/", "title": "Getting the User's Attention", "keywords": ["attention", "vibrate", "tone"] },
+      { "path": "editing-watch-faces-on-device/", "title": "Editing Watch Faces On Device", "keywords": ["watch face", "on device"] },
+      { "path": "https/", "title": "HTTPS", "keywords": ["https", "request", "network"] },
+      { "path": "authenticated-web-services/", "title": "Authenticated Web Services", "keywords": ["authentication", "oauth", "web"] },
+      { "path": "communicating-with-mobile-apps/", "title": "Communicating with Mobile Apps", "keywords": ["mobile", "companion", "communication"] },
+      { "path": "downloading-content/", "title": "Downloading Content", "keywords": ["download", "content"] },
+      { "path": "mobile-sdk-for-android/", "title": "Mobile SDK for Android", "keywords": ["android", "mobile sdk"] },
+      { "path": "mobile-sdk-for-ios/", "title": "Mobile SDK for iOS", "keywords": ["ios", "mobile sdk"] },
+      { "path": "ant-and-ant-plus/", "title": "ANT and ANT Plus", "keywords": ["ant", "ant+"] },
+      { "path": "bluetooth-low-energy/", "title": "Bluetooth Low Energy", "keywords": ["bluetooth", "ble"] },
+      { "path": "pairing-wireless-devices/", "title": "Pairing Wireless Devices", "keywords": ["pairing", "wireless"] },
+      { "path": "sensors/", "title": "Sensors", "keywords": ["sensor", "heart rate"] },
+      { "path": "positioning/", "title": "Positioning", "keywords": ["gps", "position", "location"] },
+      { "path": "activity-recording/", "title": "Activity Recording", "keywords": ["activity", "recording", "fit"] },
+      { "path": "activity-control/", "title": "Activity Control", "keywords": ["activity", "control"] },
+      { "path": "activity-prompts/", "title": "Activity Prompts", "keywords": ["activity", "prompt"] },
+      { "path": "quantifying-the-user/", "title": "Quantifying the User", "keywords": ["user", "profile", "metrics"] },
+      { "path": "complications/", "title": "Complications", "keywords": ["complication"] },
+      { "path": "shareable-libraries/", "title": "Shareable Libraries", "keywords": ["library", "barrel"] },
+      { "path": "debugging/", "title": "Debugging", "keywords": ["debug", "log"] },
+      { "path": "unit-testing/", "title": "Unit Testing", "keywords": ["unit test", "test"] },
+      { "path": "exception-reporting-tool/", "title": "Exception Reporting Tool", "keywords": ["exception", "report"] },
+      { "path": "profiling/", "title": "Profiling", "keywords": ["profile", "performance"] },
+      { "path": "publishing-to-the-store/", "title": "Publishing to the Store", "keywords": ["publish", "store"] },
+      { "path": "beta-apps/", "title": "Beta Apps", "keywords": ["beta", "test"] },
+      { "path": "trial-apps/", "title": "Trial Apps", "keywords": ["trial", "monetization"] },
+      { "path": "requesting-reviews/", "title": "Requesting Reviews", "keywords": ["review", "store"] }
+    ]
+  },
+  "apiDocs": {
+    "baseUrl": "https://developer.garmin.com/connect-iq/api-docs/",
+    "pages": [
+      { "path": "index.html", "title": "Toybox Module Index", "keywords": ["module", "toybox"] },
+      { "path": "class_list.html", "title": "Toybox Class Index", "keywords": ["class", "enum", "typedef"] },
+      { "path": "method_list.html", "title": "Toybox Method Index", "keywords": ["method", "function"] }
+    ]
+  }
+}
