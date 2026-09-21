@@ -1,0 +1,5 @@
+interface:
+  display_name: "Monkey C"
+  short_description: "Build and debug Garmin Connect IQ apps with source-grounded Monkey C guidance"
+  default_prompt: "Use $monkey-c to help with this Garmin Connect IQ or Monkey C task."
+

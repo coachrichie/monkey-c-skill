@@ -30,4 +30,30 @@ foreach ($group in 'monkeyC','coreTopics','apiDocs') {
 $tracked = @(git -C $root ls-files 'references/.generated/**')
 Assert-Equal 0 $tracked.Count 'generated Garmin files must not be tracked'
 
+$skillPath = Join-Path $root 'SKILL.md'
+Assert-True (Test-Path -LiteralPath $skillPath) 'SKILL.md exists'
+$skill = Get-Content -LiteralPath $skillPath -Raw
+Assert-True ($skill -match '(?ms)^---\s*name:\s*monkey-c\s*description:\s*Use when') 'valid skill identity'
+foreach ($reference in 'monkey-c-topics.md','core-topics.md','api-routing.md') {
+    Assert-True ($skill -match [regex]::Escape($reference)) "SKILL routes to $reference"
+    Assert-True (Test-Path -LiteralPath (Join-Path $root "references/$reference")) "$reference exists"
+}
+Assert-True ($skill -match 'If the generated cache is absent') 'clean-clone fallback is explicit'
+Assert-True ($skill -match 'cite the exact Garmin source page') 'source citation is required'
+
+$uiPath = Join-Path $root 'agents/openai.yaml'
+Assert-True (Test-Path -LiteralPath $uiPath) 'agents/openai.yaml exists'
+$ui = Get-Content -LiteralPath $uiPath -Raw
+Assert-True ($ui -match 'display_name:\s*"Monkey C"') 'display name is Monkey C'
+Assert-True ($ui -match 'default_prompt:.*\$monkey-c') 'default prompt invokes skill'
+
+foreach ($source in @(
+    'https://developer.garmin.com/connect-iq/monkey-c/',
+    'https://developer.garmin.com/connect-iq/core-topics/',
+    'https://developer.garmin.com/connect-iq/api-docs/'
+)) {
+    $allReferences = Get-ChildItem (Join-Path $root 'references') -Filter '*.md' -File | Get-Content -Raw
+    Assert-True (($allReferences -join "`n") -match [regex]::Escape($source)) "fallback source is indexed: $source"
+}
+
 Write-Output "Repository contracts passed ($((Get-AssertionCount)) assertions)"
