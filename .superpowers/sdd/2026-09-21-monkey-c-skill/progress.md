@@ -19,3 +19,4 @@ Task 4: Ruling: packaged installations resolve `scripts/expected-pages.json` fir
 Task 4: complete (commits 566e142..7c492ba, tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 155 assertions pass)
 Task 5: complete (showcase docs, governance placeholders, and accessible SVG diagrams; tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 202 assertions pass)
 Task 6: complete (read-only Windows CI workflow and governance guidance; tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 206 assertions pass)
+Task 7: complete (four forward-validation scenarios documented and exercised through local routing contracts; tests: repository 208 assertions, sync fixture 8 assertions)

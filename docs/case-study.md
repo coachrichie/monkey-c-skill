@@ -8,3 +8,4 @@ The AI contribution was implementation speed, synthesis, and documentation. Huma
 
 See [the AI workflow](ai-workflow.md), [reference routing](reference-routing.md), and [maintenance](maintenance.md) for the repeatable details.
 
+The final forward-validation pass covers a language question, a Core Topics question, a Toybox API question, and a clean-clone fallback question; see [the scenario record](../tests/forward-test.md).
