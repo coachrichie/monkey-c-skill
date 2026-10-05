@@ -1,0 +1,20 @@
+name: Validate Monkey C skill
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate repository contracts
+        shell: pwsh
+        run: ./tests/validate-repository.ps1
+      - name: Validate synchronization fixtures
+        shell: pwsh
+        run: ./tests/validate-sync.ps1

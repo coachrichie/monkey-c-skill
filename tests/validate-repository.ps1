@@ -89,7 +89,7 @@ $showcaseFiles = @(
     'README.md','CONTRIBUTING.md','SECURITY.md','LICENSE',
     'docs/installation.md','docs/usage.md','docs/case-study.md','docs/ai-workflow.md',
     'docs/reference-routing.md','docs/maintenance.md','docs/troubleshooting.md','docs/legal.md',
-    'assets/architecture.svg','assets/workflow.svg'
+    'assets/architecture.svg','assets/workflow.svg','.github/workflows/validate.yml'
 )
 foreach ($relative in $showcaseFiles) {
     Assert-True (Test-Path -LiteralPath (Join-Path $root $relative)) "showcase file exists: $relative"
@@ -103,6 +103,10 @@ foreach ($svg in 'assets/architecture.svg','assets/workflow.svg') {
     Assert-True ($svgText -match '<title>') "$svg has title"
     Assert-True ($svgText -match '<desc>') "$svg has description"
 }
+$workflow = Get-Content -LiteralPath (Join-Path $root '.github/workflows/validate.yml') -Raw
+Assert-True ($workflow -match 'contents:\s*read') 'CI permissions are read-only'
+Assert-True ($workflow -match 'validate-repository.ps1') 'CI runs repository validation'
+Assert-True ($workflow -match 'validate-sync.ps1') 'CI runs sync fixture validation'
 $markdownFiles = Get-ChildItem -LiteralPath $root -Filter '*.md' -File -Recurse | Where-Object FullName -notmatch '\.generated'
 foreach ($file in $markdownFiles) {
     $text = Get-Content -LiteralPath $file.FullName -Raw

@@ -18,3 +18,4 @@ Task 3: complete (commits 4343045..566e142, tests: fixture 8 assertions; live ca
 Task 4: Ruling: packaged installations resolve `scripts/expected-pages.json` first, with the source-tree tests manifest as fallback — keeps clean installs self-contained without copying tests — cost if wrong: future manifest updates must update both source and packaged installer copy.
 Task 4: complete (commits 566e142..7c492ba, tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 155 assertions pass)
 Task 5: complete (showcase docs, governance placeholders, and accessible SVG diagrams; tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 202 assertions pass)
+Task 6: complete (read-only Windows CI workflow and governance guidance; tests: pwsh -NoProfile -File tests/validate-repository.ps1 → 206 assertions pass)
