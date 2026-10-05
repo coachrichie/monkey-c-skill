@@ -6,11 +6,15 @@ param(
         coreTopics = 'https://developer.garmin.com/connect-iq/core-topics/'
         apiDocs = 'https://developer.garmin.com/connect-iq/api-docs/'
     },
-    [string]$ExpectedPages = (Join-Path $PSScriptRoot '..\tests\expected-pages.json'),
+    [string]$ExpectedPages,
     [switch]$SkipApiDocs
 )
 
 $ErrorActionPreference = 'Stop'
+if ([string]::IsNullOrWhiteSpace($ExpectedPages)) {
+    $packagedManifest = Join-Path $PSScriptRoot 'expected-pages.json'
+    $ExpectedPages = if (Test-Path -LiteralPath $packagedManifest) { $packagedManifest } else { Join-Path $PSScriptRoot '..\tests\expected-pages.json' }
+}
 $destinationRoot = [IO.Path]::GetFullPath($Destination)
 $parent = Split-Path $destinationRoot -Parent
 $staging = Join-Path $parent ('.staging-' + [guid]::NewGuid())

@@ -56,4 +56,33 @@ foreach ($source in @(
     Assert-True (($allReferences -join "`n") -match [regex]::Escape($source)) "fallback source is indexed: $source"
 }
 
+$installer = Join-Path $root 'scripts/install.ps1'
+Assert-True (Test-Path -LiteralPath $installer) 'install.ps1 exists'
+$tempHome = Join-Path ([IO.Path]::GetTempPath()) ("monkey-c-install-test-" + [guid]::NewGuid())
+try {
+    & $installer -CodexHome $tempHome | Out-Null
+    $installed = Join-Path $tempHome 'skills/monkey-c'
+    Assert-True (Test-Path -LiteralPath (Join-Path $installed 'SKILL.md')) 'clean install copied skill'
+    Assert-True (Test-Path -LiteralPath (Join-Path $installed '.monkey-c-skill-install.json')) 'install marker written'
+    Assert-True (Test-Path -LiteralPath (Join-Path $installed 'scripts/expected-pages.json')) 'runtime page manifest copied'
+    $installedSync = Get-Content -LiteralPath (Join-Path $installed 'scripts/sync-docs.ps1') -Raw
+    Assert-True ($installedSync -match [regex]::Escape("Join-Path `$PSScriptRoot 'expected-pages.json'")) 'installed sync resolves packaged page manifest'
+    foreach ($excluded in '.git','tests','docs','references/.generated') {
+        Assert-True (-not (Test-Path -LiteralPath (Join-Path $installed $excluded))) "installer excludes $excluded"
+    }
+
+    $collisionHome = Join-Path $tempHome 'collision'
+    New-Item -ItemType Directory -Force -Path (Join-Path $collisionHome 'skills/monkey-c') | Out-Null
+    Set-Content -LiteralPath (Join-Path $collisionHome 'skills/monkey-c/owned.txt') -Value 'do-not-touch'
+    Assert-Throws { & $installer -CodexHome $collisionHome | Out-Null } 'unmarked directory is refused'
+    Assert-Equal 'do-not-touch' (Get-Content -LiteralPath (Join-Path $collisionHome 'skills/monkey-c/owned.txt') -Raw).Trim() 'collision remains unchanged'
+
+    New-Item -ItemType Directory -Force -Path (Join-Path $installed 'references/.generated') | Out-Null
+    Set-Content -LiteralPath (Join-Path $installed 'references/.generated/sentinel.txt') -Value 'keep-cache'
+    & $installer -CodexHome $tempHome -Force | Out-Null
+    Assert-Equal 'keep-cache' (Get-Content -LiteralPath (Join-Path $installed 'references/.generated/sentinel.txt') -Raw).Trim() 'forced update preserves cache'
+} finally {
+    if (Test-Path -LiteralPath $tempHome) { Remove-Item -LiteralPath $tempHome -Recurse -Force }
+}
+
 Write-Output "Repository contracts passed ($((Get-AssertionCount)) assertions)"
