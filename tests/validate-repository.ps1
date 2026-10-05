@@ -85,4 +85,33 @@ try {
     if (Test-Path -LiteralPath $tempHome) { Remove-Item -LiteralPath $tempHome -Recurse -Force }
 }
 
+$showcaseFiles = @(
+    'README.md','CONTRIBUTING.md','SECURITY.md','LICENSE',
+    'docs/installation.md','docs/usage.md','docs/case-study.md','docs/ai-workflow.md',
+    'docs/reference-routing.md','docs/maintenance.md','docs/troubleshooting.md','docs/legal.md',
+    'assets/architecture.svg','assets/workflow.svg'
+)
+foreach ($relative in $showcaseFiles) {
+    Assert-True (Test-Path -LiteralPath (Join-Path $root $relative)) "showcase file exists: $relative"
+}
+$readme = Get-Content -LiteralPath (Join-Path $root 'README.md') -Raw
+foreach ($required in 'Built with AI, for AI','language question','Core Topics','Toybox API','AI assisted','owner selected the goals','validation-summary:start','case-study.md','architecture.svg') {
+    Assert-True ($readme -match [regex]::Escape($required)) "README includes $required"
+}
+foreach ($svg in 'assets/architecture.svg','assets/workflow.svg') {
+    $svgText = Get-Content -LiteralPath (Join-Path $root $svg) -Raw
+    Assert-True ($svgText -match '<title>') "$svg has title"
+    Assert-True ($svgText -match '<desc>') "$svg has description"
+}
+$markdownFiles = Get-ChildItem -LiteralPath $root -Filter '*.md' -File -Recurse | Where-Object FullName -notmatch '\.generated'
+foreach ($file in $markdownFiles) {
+    $text = Get-Content -LiteralPath $file.FullName -Raw
+    foreach ($match in [regex]::Matches($text, '\[[^\]]+\]\(([^)#]+)\)')) {
+        $value = $match.Groups[1].Value
+        if ($value -match '^(?:https?://|mailto:)') { continue }
+        $target = [IO.Path]::GetFullPath((Join-Path $file.DirectoryName $value.Replace('/', [IO.Path]::DirectorySeparatorChar)))
+        Assert-True (Test-Path -LiteralPath $target) "$($file.Name) link resolves: $value"
+    }
+}
+
 Write-Output "Repository contracts passed ($((Get-AssertionCount)) assertions)"

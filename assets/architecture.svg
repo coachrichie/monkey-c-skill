@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title>Monkey C skill architecture</title>
+  <desc>A flow from a developer question through local routing and generated references to a cited answer.</desc>
+  <style>text{font-family:Arial,sans-serif;fill:#172033}.box{fill:#f4f7fb;stroke:#315b8a;stroke-width:2}.arrow{stroke:#315b8a;stroke-width:3;marker-end:url(#m)}</style>
+  <defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315b8a"/></marker></defs>
+  <rect class="box" x="30" y="130" width="170" height="90" rx="14"/><text x="115" y="168" text-anchor="middle">Developer</text><text x="115" y="190" text-anchor="middle">question</text>
+  <rect class="box" x="260" y="130" width="170" height="90" rx="14"/><text x="345" y="168" text-anchor="middle">Skill routing</text><text x="345" y="190" text-anchor="middle">guides</text>
+  <rect class="box" x="490" y="55" width="170" height="90" rx="14"/><text x="575" y="93" text-anchor="middle">Generated</text><text x="575" y="115" text-anchor="middle">Garmin cache</text>
+  <rect class="box" x="490" y="205" width="170" height="90" rx="14"/><text x="575" y="243" text-anchor="middle">Official source</text><text x="575" y="265" text-anchor="middle">fallback</text>
+  <rect class="box" x="720" y="130" width="150" height="90" rx="14"/><text x="795" y="168" text-anchor="middle">Answer with</text><text x="795" y="190" text-anchor="middle">citation</text>
+  <path class="arrow" d="M200 175 H260"/><path class="arrow" d="M430 175 H490"/><path class="arrow" d="M660 100 H700 V160 H720"/><path class="arrow" d="M660 250 H700 V190 H720"/>
+</svg>

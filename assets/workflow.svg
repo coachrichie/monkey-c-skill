@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+  <title>AI-assisted repository workflow</title>
+  <desc>A five-step workflow from owner goals through tests, implementation, verification, and public documentation.</desc>
+  <style>text{font-family:Arial,sans-serif;fill:#172033}.step{fill:#fff8e8;stroke:#9c6b17;stroke-width:2}.arrow{stroke:#9c6b17;stroke-width:3;marker-end:url(#m)}</style>
+  <defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#9c6b17"/></marker></defs>
+  <g transform="translate(25,80)"><rect class="step" width="145" height="90" rx="14"/><text x="72" y="40" text-anchor="middle">1. Goals</text><text x="72" y="62" text-anchor="middle">owner selected</text></g>
+  <g transform="translate(205,80)"><rect class="step" width="145" height="90" rx="14"/><text x="72" y="40" text-anchor="middle">2. Tests</text><text x="72" y="62" text-anchor="middle">fail first</text></g>
+  <g transform="translate(385,80)"><rect class="step" width="145" height="90" rx="14"/><text x="72" y="40" text-anchor="middle">3. Build</text><text x="72" y="62" text-anchor="middle">skill + tooling</text></g>
+  <g transform="translate(565,80)"><rect class="step" width="145" height="90" rx="14"/><text x="72" y="40" text-anchor="middle">4. Verify</text><text x="72" y="62" text-anchor="middle">offline + live</text></g>
+  <g transform="translate(745,80)"><rect class="step" width="130" height="90" rx="14"/><text x="65" y="40" text-anchor="middle">5. Share</text><text x="65" y="62" text-anchor="middle">showcase</text></g>
+  <path class="arrow" d="M170 125 H205"/><path class="arrow" d="M350 125 H385"/><path class="arrow" d="M530 125 H565"/><path class="arrow" d="M710 125 H745"/>
+</svg>
